@@ -1,0 +1,45 @@
+body {
+    margin-left: 2vw;
+    margin-right: 2vw;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.card {
+    padding: 30px;
+    color: white;
+    background-color: #82148c;
+    border-radius: 5px;
+    text-align: center;
+    max-width: 700px;
+    margin: 5px;
+    -webkit-box-shadow: 3px 5px 1px 0px rgba(102,95,102,1);
+    -moz-box-shadow: 3px 5px 1px 0px rgba(102,95,102,1);
+    box-shadow: 3px 5px 1px 0px rgba(102,95,102,1);
+}
+
+#score {
+    text-align: right;
+    font-size: 190%;
+}
+
+.btn {
+    border: none;
+    font-size: 200%;
+    border-radius: 5px;
+    background-color: slategray;
+    color: white;
+}
+.btn:hover {
+    background-color: thistle;
+    transition: .4;
+}
+
+.buttongrid {
+    max-width: 500px;
+}
