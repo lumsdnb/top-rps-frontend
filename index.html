@@ -4,20 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>R O C K P A P E R S C I S S O R S</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Sansita+Swashed&display=swap');
+    </style>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <div class="card">
-            <div class="buttongrid">
-                <p>Choose your pick</p>
+            <h2 id="fightme-title">f i g h t . . . m e . . .</h2>
+                <div class="buttongrid">
                 <button class="btn rock">rock</button>
                 <button class="btn paper">paper</button>
                 <button class="btn scissors">scissors</button>
             </div>
         </div>
         <div class="card">
-            <div id="score"> SCORE <br> player: 0 <br> PC: 0</div>
+            <h2 id="score-title">SCORE</h2> 
+            <div id="score"> 
+                <span>player:</span> 
+                <span id="score-player">0</span>
+                <span>PC:</span>
+                <span id="score-pc">0</span>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
