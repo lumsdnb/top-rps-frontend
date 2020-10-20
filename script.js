@@ -65,7 +65,6 @@ const scoreCard = document.querySelector('#score');
 const playerScoreDom = document.querySelector('#score-player');
 const pcScoreDom = document.querySelector('#score-pc');
 
-let score = [0, 0];
 let playerScore = 0;
 let pcScore = 0;
 
@@ -79,14 +78,13 @@ buttons.forEach((button) => {
 
         if (Math.max(playerScore, pcScore)< 5) {
             let playerTemp = playRound(button.textContent);
-            console.log(playerTemp);
             playerScore += playerTemp[0];
             pcScore += playerTemp[1];
             playerScoreDom.innerHTML = playerScore;
             pcScoreDom.innerHTML = pcScore;
         } 
         if (playerScore >= 5) {
-            title.innerHTML = "a a a r r g h h h . . . d e f e a t . . ."
+            title.innerHTML = "n o o . . . d e f e a t . . ."
         } else if (pcScore >= 5) {
             title.innerHTML = "f a r e w e l l . . ."
         }
