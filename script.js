@@ -4,23 +4,20 @@ function computerPlay() {
     return choice;
 }
 
-//ask player to pick rock paper or scissors
-//play single round
-
-
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection) {
+    let computerSelection = computerPlay();
     const playerPickLowerCase = playerSelection.toLowerCase();
     switch (playerPickLowerCase) {
         case "rock":
             switch (computerSelection) {
                 case "rock":
-                    return "Tie! Rock vs rock";
+                    return [0, 0];
                     break;
                 case "paper":
-                    return "You lose! Paper beats rock";
+                    return [0, 1];
                     break;
                 case "scissors":
-                    return "You win! Scissors beat rock";
+                    return [1, 0];
                 default:
                     break;
             }
@@ -28,13 +25,13 @@ function playRound(playerSelection, computerSelection) {
         case "paper":
             switch (computerSelection) {
                 case "rock":
-                    return "You win! Paper beats rock";
+                    return [1, 0];
                     break;
                 case "paper":
-                    return "Tie! Paper vs paper";
+                    return [0, 0];
                     break;
                 case "scissors":
-                    return "You lose! Scissors beats paper";
+                    return [0, 1];
                 default:
                     break;
             }
@@ -42,13 +39,13 @@ function playRound(playerSelection, computerSelection) {
         case "scissors":
             switch (computerSelection) {
                 case "rock":
-                    return "You lose! Rock beats scissors";
+                    return [0, 1];
                     break;
                 case "paper":
-                    return "You win! Scissors beats paper";
+                    return [1, 0];
                     break;
                 case "scissors":
-                    return "Tie! Scissors vs scissors";
+                    return [0, 0];
                 default:
                     break;
             }
@@ -60,50 +57,38 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game() {
-    let playerSelection = "";
-    let computerSelection = computerPlay();
-    let computerScore = 0;
-    let playerScore = 0;
-    let highestScore = Math.max(computerScore, playerScore);
-    
-    while (highestScore<5) {
-        playerSelection = prompt(`enter rock, paper, or scissors \r\n You: ${ playerScore } PC: ${ computerScore }`);
-        if (playRound(playerSelection, computerSelection).substring(0, 5) == "You w") {
-            playerScore += 1;
-        } else if (playRound(playerSelection, computerSelection).substring(0, 5) == "You l") {
-            computerScore += 1;
-        }
-        console.log(playRound(playerSelection, computerSelection));
-        highestScore = Math.max(computerScore, playerScore);
-        computerSelection = computerPlay();
-    }
-    
-    alert(`FINAL SCORE: \r\n YOU: ${playerScore} PC: ${computerScore}`)
-
-
-}
-
 // buttons is a node list. It looks and acts much like an array.
 const buttons = document.querySelectorAll('button');
 
+const title = document.querySelector('#fightme-title')
+const scoreCard = document.querySelector('#score');
+const playerScoreDom = document.querySelector('#score-player');
+const pcScoreDom = document.querySelector('#score-pc');
+
+let score = [0, 0];
+let playerScore = 0;
+let pcScore = 0;
+
+//let highestScore = Math.max(computerScore, playerScore);
+
 // we use the .forEach method to iterate through each button
 buttons.forEach((button) => {
-
+    
     // and for each one we add a 'click' listener
     button.addEventListener('click', () => {
-        switch (button.textContent) {
-            case "rock":
-                playRound("rock",computerPlay);
-                break;
-            case "paper":
-                playRound("paper", computerPlay);
-                break;
-            case "scissors":
-                playRound("scissors", computerPlay);
-                break;
-            default:
-                break;
+
+        if (Math.max(playerScore, pcScore)< 5) {
+            let playerTemp = playRound(button.textContent);
+            console.log(playerTemp);
+            playerScore += playerTemp[0];
+            pcScore += playerTemp[1];
+            playerScoreDom.innerHTML = playerScore;
+            pcScoreDom.innerHTML = pcScore;
+        } 
+        if (playerScore >= 5) {
+            title.innerHTML = "a a a r r g h h h . . . d e f e a t . . ."
+        } else if (pcScore >= 5) {
+            title.innerHTML = "f a r e w e l l . . ."
         }
     });
 });
