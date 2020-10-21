@@ -7,6 +7,13 @@ body {
     --col4: #3D348B;
     --col5: #BEB7A4;
     background-color: var(--col5);
+    
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .container {
